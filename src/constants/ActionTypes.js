@@ -1,0 +1,8 @@
+export const ADDTODO = 'ADDTODO';
+export const ADDTODOS = 'ADDTODOS';
+export const UPDATETODO = 'UPDATETODO';
+export const REMOVETODO = 'REMOVETODO';
+export const ADDCATEGORY = 'ADDCATEGORY';
+export const ADDCATEGORIES = 'ADDCATEGORIES';
+export const UPDATECATEGORY = 'UPDATECATEGORY';
+export const REMOVECATEGORY = 'REMOVECATEGORY';
