@@ -8,7 +8,8 @@ export default class Categories extends Component {
     const { categories } = this.props;
     return (<ul>
       {categories.map((category) => {
-        return (<li>{category.name}</li>);
+        //ここはなんだっけ
+        return (<li>{category.name}ddd</li>);
       })}
     </ul>)
   }
