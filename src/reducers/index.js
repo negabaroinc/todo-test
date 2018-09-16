@@ -25,9 +25,10 @@ export default (state = initialState, action) => {
         });
       }
     case types.REMOVETODO:
-      const removeIndex = state.entries.findIndex((entry) => entry.id === action.entry.id);
+      console.log(action.todo, action.todo.id);
+      const removeIndex = state.todos.findIndex((todo) => todo.id === action.todo.id);
       return Object.assign({}, state, {
-        entries: [...state.entries.slice(0, removeIndex), ...state.entries.slice(removeIndex + 1)]
+        todos: [...state.todos.slice(0, removeIndex), ...state.todos.slice(removeIndex + 1)]
       });
     case types.ADDCATEGORY:
       return Object.assign({}, state, { categories: [...state.categories, action.category] })

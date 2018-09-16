@@ -27,7 +27,7 @@ class App extends React.Component {
 
     return (<div>
       <Categories categories={categories} />
-      <Todos todos={todos} addTodo={actions.addTodo} />
+      <Todos todos={todos} addTodo={actions.addTodo} removeTodo={actions.removeTodo} />
     </div>
     );
   }

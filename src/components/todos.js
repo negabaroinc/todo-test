@@ -15,14 +15,23 @@ export default class Todos extends Component {
   }
 
   addTodo() {
-    this.props.addTodo(this.state);
+    this.props.addTodo({
+      name: this.state.name,
+      id: '_' + Math.random().toString(36).substr(2, 9)
+    });
+  }
+
+  removeTodo(todo) {
+    this.props.removeTodo(todo);
   }
 
   render() {
-    const { todos } = this.props;
+    const { todos, removeTodo } = this.props;
     return (<ul>
       {todos.map((todo) => {
-        return (<li>{todo.name}</li>);
+        return (<li>{todo.name}
+          <button onClick={this.removeTodo.bind(this, todo)}>削除</button>
+        </li>);
       })}
       <li>
         <input type="text" onInput={this.onInput.bind(this)}/>
