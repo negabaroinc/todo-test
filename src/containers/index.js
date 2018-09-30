@@ -12,22 +12,43 @@ class App extends React.Component {
   }
 
   getTodos() {
-    const { todos, selectedCategoryId } = this.props;
+    const { todos, selectedCategory } = this.props;
     return todos.filter((todo) => {
-      if (todo.category === selectedCategoryId) {
+      if (todo.category === selectedCategory) {
         return true;
       }
       return false;
     });
   }
 
+  getCategoryName() {
+    const { categories, selectedCategory } = this.props;
+    const category = categories.find((category) => {
+      if (category.id === selectedCategory) {
+        return true;
+      }
+      return false;
+    });
+    return category.name;
+  }
+
   render() {
-    const { categories, actions } = this.props;
+    const { categories, actions, selectedCategory } = this.props;
     const todos = this.getTodos();
+    const categoryName = this.getCategoryName();
 
     return (<div>
-      <Categories categories={categories} />
-      <Todos todos={todos} addTodo={actions.addTodo} removeTodo={actions.removeTodo} />
+      <Categories categories={categories} 
+        addCategory={actions.addCategory} 
+        removeCategory={actions.removeCategory}
+        setCategory={actions.setCategory}
+      />
+      <p>選択中のカテゴリー 「{categoryName}」</p>
+      <Todos todos={todos} 
+        addTodo={actions.addTodo} 
+        removeTodo={actions.removeTodo}
+        selectedCategory={selectedCategory}
+      />
     </div>
     );
   }
