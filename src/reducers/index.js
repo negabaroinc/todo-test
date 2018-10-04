@@ -2,8 +2,10 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = {
   todos: [],
-  categories: []
+  categories2: []
 };
+
+
 
 export default (state = initialState, action) => {
   // action = { type: types.ADDTODO, todo: { name: ''}}
@@ -29,6 +31,7 @@ export default (state = initialState, action) => {
         })
       } else {
         return Object.assign({}, state, {
+          
           todos: [...state.todos, action.todo],
           todo: action.todo
         });
@@ -62,10 +65,13 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         todos: [...state.todos.slice(0, removeIndex), ...state.todos.slice(removeIndex + 1)]
       });
+   //=-5
+   
     case types.ADDCATEGORY:
-      return Object.assign({}, state, { categories: [...state.categories, action.category] })
+      return Object.assign({}, state, { categories2: [...state.categories2, action.category] })
+   /*
     case types.ADDCATEGORIES:
-      return Object.assign({}, state, { categories: [...state.categories, ...action.categories] })
+      //return Object.assign({}, state, { categories: [...state.categories, ...action.categories] })
     case types.UPDATECATEGORY:
       const categoryIndex = state.categories.findIndex((category) => category.id === action.category.id);
       if (categoryIndex >= 0) {
@@ -75,11 +81,13 @@ export default (state = initialState, action) => {
       } else {
         return state;
       }
+    */
     case types.REMOVECATEGORY:
-      const removeCategoryIndex = state.categories.findIndex((category) => category.id === action.category.id);
+      const removeCategoryIndex = state.categories2.findIndex((category) => category.id === action.category.id);
       return Object.assign({}, state, {
-        categories: [...state.categories.slice(0, removeCategoryIndex), ...state.categories.slice(removeCategoryIndex + 1)]
+        categories2: [...state.categories2.slice(0, removeCategoryIndex), ...state.categories2.slice(removeCategoryIndex + 1)]
       });
+      
     default:
       return state;
   }

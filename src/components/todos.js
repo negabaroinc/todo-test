@@ -12,35 +12,51 @@ export default class Todos extends Component {
     }
   }
 
-  onInput(e) {
+  onInput3(e) {
     this.setState({
       name: e.target.value
     });
   }
 
   //koko
-  addTodo() {
-    this.props.addTodo({
+  addTodo3() {
+    this.props.addTodo2({
       name: this.state.name,
-      id: getRandomId()
+      //------>>>>>0に固定したけど、categoryを選ぶには？？
+      
+      id: this.props.category_id[0].id,
+      //id: this.props.key_hoge
+      //id: getRandomId()
     });
   }
   //koko2
-  removeTodo(todo) { // { name: 'hoge', id: 'uniqueなid' }
-    this.props.removeTodo(todo);
+  removeTodo3(todo) { // { name: 'hoge', id: 'uniqueなid' }
+    this.props.removeTodo2(todo);
   }
   
   render() {
-    const { todos } = this.props;
-    return (<ul>
+    console.log('22222:');
+    console.log(this.props);
+    const { todos,category_id } = this.props;
+    return (
+      <div>
+      <select name="example1">
       {todos.map((todo) => {
         //koko3
-        return (<li>{todo.name}<button onClick={this.removeTodo.bind(this, todo)}>削除</button></li>);
+        return (<option key={todo.id}>{todo.name}<button onClick={this.removeTodo3.bind(this, todo)}>削除</button></option>);
+      })}
+      </select>
+      
+      <ul>
+      <h1>Todo</h1>
+      {todos.map((todo) => {
+        //koko3
+        return (<li key={todo.id}>{todo.name}<button onClick={this.removeTodo3.bind(this, todo)}>削除</button></li>);
       })}
       <li>
-        <input type="text" onInput={this.onInput.bind(this)}/>
-        <button onClick={this.addTodo.bind(this)}>追加</button>
+        <input type="text" onInput={this.onInput3.bind(this)} />
+        <button onClick={this.addTodo3.bind(this)}>追加</button>
       </li>
-    </ul>)
+    </ul></div>)
   }
 }

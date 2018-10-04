@@ -31,12 +31,19 @@ class App extends React.Component {
     //5. 3ばんで渡された値がreducerに渡される
     //6. reducer で ゴニョゴニョしてstateの値が変更される
     //7. ゴニョ先ほどのstateがApp.props（Container）に代入される
-    const { categories, actions } = this.props;
+    
+    console.log('33333333333333');
+    console.log(this.props);
+    //ここではreduxにあるデータ参照できる(this.props)
+    const { categories2, actions } = this.props;
     const todos = this.getTodos();
-
+    const getRandomId = () => {
+      return '_' + Math.random().toString(36).substr(2, 9);
+    }
     return (<div>
-      <Categories categories={categories} />
-      <Todos todos={todos} addTodo={actions.addTodo} removeTodo={actions.removeTodo} />
+      {/* ------>>>>>keyと書くと値が取れず。。とりあえずkey_hogeにした */}
+      <Categories key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory2={actions.removeCategory}/>
+      <Todos category_id={categories2} todos={todos} addTodo2={actions.addTodo} removeTodo2={actions.removeTodo} />
     </div>
     );
   }
