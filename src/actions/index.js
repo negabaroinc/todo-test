@@ -13,4 +13,6 @@ export const addCategory = (category) => ({ type: types.ADDCATEGORY, category })
 
 export const updateCategory = (category) => ({ type: types.UPDATECATEGORY, category });
 
-export const removeCategory = (category) => ({ type: types.REMOVECATEGORY, category: category });
+export const removeCategory = (category) => ({ type: types.REMOVECATEGORY, category });
+
+export const setCategory = (categoryId) => ({ type: types.SETCATEGORY, categoryId });

@@ -18,6 +18,7 @@ export default class Todos extends Component {
     });
   }
 
+
   //koko
   addTodo3() {
     this.props.addTodo2({
@@ -28,6 +29,7 @@ export default class Todos extends Component {
       //id: this.props.key_hoge
       //id: getRandomId()
     });
+
   }
   //koko2
   removeTodo3(todo) { // { name: 'hoge', id: 'uniqueなid' }
@@ -35,6 +37,7 @@ export default class Todos extends Component {
   }
   
   render() {
+
     console.log('22222:');
     console.log(this.props);
     const { todos,category_id } = this.props;

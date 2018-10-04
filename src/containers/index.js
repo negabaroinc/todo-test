@@ -13,13 +13,24 @@ class App extends React.Component {
   }
 
   getTodos() {
-    const { todos, selectedCategoryId } = this.props;
+    const { todos, selectedCategory } = this.props;
     return todos.filter((todo) => {
-      if (todo.category === selectedCategoryId) {
+      if (todo.category === selectedCategory) {
         return true;
       }
       return false;
     });
+  }
+
+  getCategoryName() {
+    const { categories, selectedCategory } = this.props;
+    const category = categories.find((category) => {
+      if (category.id === selectedCategory) {
+        return true;
+      }
+      return false;
+    });
+    return category.name;
   }
 
   render() {

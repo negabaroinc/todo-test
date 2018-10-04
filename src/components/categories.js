@@ -5,8 +5,11 @@ import React, { Component } from 'react';
 export default class Categories extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      categoryName: ''
+    }
   }
-  
+
   onInput4(e){
     this.setState({
      name: e.target.value
@@ -42,5 +45,6 @@ export default class Categories extends Component {
       <button onClick={() => this.addCategory3()}>Add</button>
     </li>
     </ul>)
+
   }
 }

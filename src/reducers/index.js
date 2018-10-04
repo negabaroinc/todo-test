@@ -1,5 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
+const intialId = '_' + Math.random().toString(36).substr(2, 9)
+
 const initialState = {
   todos: [],
   categories2: []
@@ -12,6 +14,10 @@ export default (state = initialState, action) => {
   //action.type === types.ADDTODO
   //action.todo === { name: ''}
   switch (action.type) {
+    case types.SETCATEGORY:
+      return Object.assign({}, state, {
+        selectedCategory: action.categoryId
+      });
     case types.ADDTODO:
       // {}, { todos: [], categories:[]}, { todos: [空, {name: ''}]}}
       // {}, { todos: [], categories:[]}, {todos: [{name: ''}]}
