@@ -14,8 +14,8 @@ export default class Categories extends Component {
     this.setState({
      name: e.target.value
     });
-    
   }
+  
   removeCategory3(category){
     this.props.removeCategory2(category)
   }

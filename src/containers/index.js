@@ -15,22 +15,22 @@ class App extends React.Component {
   getTodos() {
     const { todos, selectedCategory } = this.props;
     return todos.filter((todo) => {
-      if (todo.category === selectedCategory) {
-        return true;
-      }
-      return false;
+      //if (todo.category === selectedCategory) {
+      //  return true;
+      //}
+      //return false;
     });
   }
 
   getCategoryName() {
-    const { categories, selectedCategory } = this.props;
-    const category = categories.find((category) => {
-      if (category.id === selectedCategory) {
+    const { categories2, selectedCategory } = this.props;
+    const category88 = categories2.find((category55) => {
+      if (category55.id === selectedCategory) {
         return true;
       }
       return false;
     });
-    return category.name;
+    return category55.name;
   }
 
   render() {
@@ -46,15 +46,17 @@ class App extends React.Component {
     console.log('33333333333333');
     console.log(this.props);
     //ここではreduxにあるデータ参照できる(this.props)
-    const { categories2, actions } = this.props;
+    const { categories2, actions, selectedCategory } = this.props;
     const todos = this.getTodos();
+    const categoryName = this.getCategoryName();
     const getRandomId = () => {
       return '_' + Math.random().toString(36).substr(2, 9);
     }
     return (<div>
       {/* ------>>>>>keyと書くと値が取れず。。とりあえずkey_hogeにした */}
-      <Categories key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory2={actions.removeCategory}/>
-      <Todos category_id={categories2} todos={todos} addTodo2={actions.addTodo} removeTodo2={actions.removeTodo} />
+      <Categories key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory2={actions.removeCategory} setCategory={actions.setCategory}/>
+      <p>選択中のカテゴリー 「{categoryName}」</p>
+      <Todos category_id={categories2} todos={todos} addTodo2={actions.addTodo} removeTodo2={actions.removeTodo} selectedCategory={selectedCategory} />
     </div>
     );
   }

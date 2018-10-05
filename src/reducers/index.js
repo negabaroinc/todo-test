@@ -1,7 +1,5 @@
 import * as types from '../constants/ActionTypes';
 
-const intialId = '_' + Math.random().toString(36).substr(2, 9)
-
 const initialState = {
   todos: [],
   categories2: []
@@ -14,10 +12,6 @@ export default (state = initialState, action) => {
   //action.type === types.ADDTODO
   //action.todo === { name: ''}
   switch (action.type) {
-    case types.SETCATEGORY:
-      return Object.assign({}, state, {
-        selectedCategory: action.categoryId
-      });
     case types.ADDTODO:
       // {}, { todos: [], categories:[]}, { todos: [空, {name: ''}]}}
       // {}, { todos: [], categories:[]}, {todos: [{name: ''}]}
@@ -71,7 +65,7 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         todos: [...state.todos.slice(0, removeIndex), ...state.todos.slice(removeIndex + 1)]
       });
-   //=-5
+   
    
     case types.ADDCATEGORY:
       return Object.assign({}, state, { categories2: [...state.categories2, action.category] })
@@ -92,6 +86,10 @@ export default (state = initialState, action) => {
       const removeCategoryIndex = state.categories2.findIndex((category) => category.id === action.category.id);
       return Object.assign({}, state, {
         categories2: [...state.categories2.slice(0, removeCategoryIndex), ...state.categories2.slice(removeCategoryIndex + 1)]
+      });
+    case types.SETCATEGORY:
+      return Object.assign({}, state, {
+        selectedCategory: action.categoryId
       });
       
     default:
