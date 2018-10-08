@@ -22,6 +22,15 @@ class App extends React.Component {
     });
   }
 
+  // 
+  // const find = [1, 2, 3, 4, 5].find((item) => {
+  //  if (item - 3 === 1) {
+  //   return true;
+  //  }
+  //  return false;
+  //})
+  // find = 4
+
   getCategoryName() {
     const { categories2, selectedCategory } = this.props;
     const category88 = categories2.find((category55) => {
@@ -30,7 +39,10 @@ class App extends React.Component {
       }
       return false;
     });
-    return category55.name;
+    if (!category88) {
+      return null;
+    }
+    return category88.name;
   }
 
   render() {
