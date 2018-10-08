@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getRandomId } from '../lib';
 
 export default class Categories extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class Categories extends Component {
     const { categoryName } = this.state;
     addCategory({
       name: categoryName,
-      id: '_' + Math.random().toString(36).substr(2, 9)
+      id: getRandomId()
     });
   }
 

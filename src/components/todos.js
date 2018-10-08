@@ -18,7 +18,7 @@ export default class Todos extends Component {
     const { addTodo, selectedCategory } = this.props;
     addTodo({
       name: this.state.name,
-      id: '_' + Math.random().toString(36).substr(2, 9),
+      id: getRandomId(),
       category: selectedCategory
     });
   }
