@@ -4,6 +4,7 @@ import React from 'react';
 import Categories from '../components/categories';
 import Todos from '../components/todos';
 import * as Actions from '../actions';
+import { getRandomId } from '../lib';
 
 class App extends React.Component {
 
@@ -15,10 +16,10 @@ class App extends React.Component {
   getTodos() {
     const { todos, selectedCategory } = this.props;
     return todos.filter((todo) => {
-      //if (todo.category === selectedCategory) {
-      //  return true;
-      //}
-      //return false;
+      if (todo.category === selectedCategory) {
+        return true;
+      }
+      return false;
     });
   }
 
@@ -30,7 +31,10 @@ class App extends React.Component {
       }
       return false;
     });
-    return category55.name;
+    if (!category88){
+      return null;
+    }
+    return category88.name;
   }
 
   render() {
@@ -49,14 +53,11 @@ class App extends React.Component {
     const { categories2, actions, selectedCategory } = this.props;
     const todos = this.getTodos();
     const categoryName = this.getCategoryName();
-    const getRandomId = () => {
-      return '_' + Math.random().toString(36).substr(2, 9);
-    }
     return (<div>
       {/* ------>>>>>keyと書くと値が取れず。。とりあえずkey_hogeにした */}
-      <Categories key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory2={actions.removeCategory} setCategory={actions.setCategory}/>
+      <Categories categoryName={categoryName} key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory={actions.removeCategory} setCategory77={actions.setCategory}/>
       <p>選択中のカテゴリー 「{categoryName}」</p>
-      <Todos category_id={categories2} todos={todos} addTodo2={actions.addTodo} removeTodo2={actions.removeTodo} selectedCategory={selectedCategory} />
+      <Todos key_hoge={getRandomId()}  todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
     </div>
     );
   }

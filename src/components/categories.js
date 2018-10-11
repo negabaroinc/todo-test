@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 
-
 export default class Categories extends Component {
   constructor(props) {
     super(props);
@@ -10,14 +9,14 @@ export default class Categories extends Component {
     }
   }
 
-  onInput4(e){
+  onInput(e){
     this.setState({
      name: e.target.value
     });
   }
   
-  removeCategory3(category){
-    this.props.removeCategory2(category)
+  removeCategory(category){
+    this.props.removeCategory(category)
   }
   
   //このeどこで使ってる？なくてもうごくよね
@@ -28,19 +27,38 @@ export default class Categories extends Component {
        name: this.state.name,
     });
   }
+  
+  setCategory(categoryId) {
+    this.props.setCategory77(categoryId);
+  }
+  setCategory_ver2(e) {
+    this.props.setCategory77(e.target.key);
+  }
+  
   render() {
+    const { categories3 } = this.props;
     console.log('11111111111111:');
     console.log(this.props);
     //categories2はcontainerで渡したkeyのこと
-    const { categories3 } = this.props;
     return (<ul><h1>Category</h1>
+      <select name="example1" onChange={this.setCategory_ver2}>
+      {console.log('categories3!!!:'+ categories3)}
+      {categories3.map((category) => {
+        //koko3 (categoryNameがあればselectedを変える)
+        return (<option key={category.id}>{category.name}</option>);
+      })}
+      </select>
+      
       {/* test */}
       {categories3.map((category) => {
-        //ここはなんだっけ
-        return (<li>{category.name} <button onClick={() => this.removeCategory3(category)}> del</button></li>);
+        return (<li>
+        {category.name}
+        <button onClick={this.setCategory.bind(this, category.id)}>選択</button>
+        <button onClick={() => this.removeCategory(category)}> del</button>
+        </li>);
       })}
     <li>
-      <input type="text" onInput={this.onInput4.bind(this)} />
+      <input type="text" onInput={this.onInput.bind(this)} />
       {/*<button onClick={(event) => this.addCategory3(event)}>Add</button>*/}
       <button onClick={() => this.addCategory3()}>Add</button>
     </li>
