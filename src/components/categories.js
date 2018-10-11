@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getRandomId } from '../lib';
 
 
 export default class Categories extends Component {
@@ -23,7 +24,7 @@ export default class Categories extends Component {
   addCategory3(){
     this.props.addCategory2({
        //------>>>>>id: 成功したけど、このやり方であってるかな
-       id: this.props.key_hoge,
+       id: getRandomId(),
        name: this.state.name,
     });
   }
@@ -32,26 +33,29 @@ export default class Categories extends Component {
     this.props.setCategory77(categoryId);
   }
   setCategory_ver2(e) {
-    this.props.setCategory77(e.target.key);
+    console.log(this);
+    this.props.setCategory77(e.target.value);
   }
   
   render() {
-    const { categories3 } = this.props;
+    const { categories3, selectedCategory } = this.props;
     console.log('11111111111111:');
     console.log(this.props);
     //categories2はcontainerで渡したkeyのこと
     return (<ul><h1>Category</h1>
-      <select name="example1" onChange={this.setCategory_ver2}>
+      <select name="example1" onChange={(e) => {
+        this.setCategory_ver2(e);
+      }} value={selectedCategory}>
       {console.log('categories3!!!:'+ categories3)}
       {categories3.map((category) => {
         //koko3 (categoryNameがあればselectedを変える)
-        return (<option key={category.id}>{category.name}</option>);
+        return (<option key={category.id} value={category.id}>{category.name}</option>);
       })}
       </select>
       
       {/* test */}
       {categories3.map((category) => {
-        return (<li>
+        return (<li key={category.id}>
         {category.name}
         <button onClick={this.setCategory.bind(this, category.id)}>選択</button>
         <button onClick={() => this.removeCategory(category)}> del</button>

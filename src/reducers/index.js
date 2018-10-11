@@ -1,15 +1,15 @@
 import * as types from '../constants/ActionTypes';
-import { intialId } from '../lib';
-//const intialId = '_' + Math.random().toString(36).substr(2, 9)
+import { getRandomId } from '../lib';
+const initialId = getRandomId();
  
 
 const initialState = {
   todos: [],
   categories2: [{
     name: '名称未設定',
-    id: intialId
+    id: initialId
   }],
-  selectedCategory: intialId
+  selectedCategory: initialId
 };
 
 

@@ -64,10 +64,9 @@ class App extends React.Component {
     const todos = this.getTodos();
     const categoryName = this.getCategoryName();
     return (<div>
-      {/* ------>>>>>keyと書くと値が取れず。。とりあえずkey_hogeにした */}
-      <Categories categoryName={categoryName} key_hoge={getRandomId()} categories3={categories2} addCategory2={actions.addCategory} removeCategory={actions.removeCategory} setCategory77={actions.setCategory}/>
+      <Categories categoryName={categoryName} selectedCategory={selectedCategory} categories3={categories2} addCategory2={actions.addCategory} removeCategory={actions.removeCategory} setCategory77={actions.setCategory}/>
       <p>選択中のカテゴリー 「{categoryName}」</p>
-      <Todos key_hoge={getRandomId()}  todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
+      <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
     </div>
     );
   }
