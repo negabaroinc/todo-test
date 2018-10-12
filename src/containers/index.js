@@ -4,11 +4,13 @@ import React from 'react';
 import Categories from '../components/categories';
 import Todos from '../components/todos';
 import * as Actions from '../actions';
+import { getRandomId } from '../lib';
 
 class App extends React.Component {
 
+  //App.props
   constructor(props) {
-    super(props);
+    super(props); //React.Component::constructor(props); お約束
   }
 
   getTodos() {
@@ -21,41 +23,58 @@ class App extends React.Component {
     });
   }
 
+  // 
+  // const find = [1, 2, 3, 4, 5].find((item) => {
+  //  if (item - 3 === 1) {
+  //   return true;
+  //  }
+  //  return false;
+  //})
+  // find = 4
+
   getCategoryName() {
-    const { categories, selectedCategory } = this.props;
-    const category = categories.find((category) => {
-      if (category.id === selectedCategory) {
+    const { categories2, selectedCategory } = this.props;
+    const category88 = categories2.find((category55) => {
+      if (category55.id === selectedCategory) {
         return true;
       }
       return false;
     });
-    return category.name;
+
+    if (!category88) {
+      return null;
+    }
+    return category88.name;
   }
 
   render() {
-    const { categories, actions, selectedCategory } = this.props;
+    //props === { todos: [{name: ''}], categories: []}
+    //1. componentでaddTodo実行される
+    //2. actionのaddTodoが実行される
+    //3. actions/index.js 7行目. /{ name: '' } -> { type: types.ADDTODO, todo: { name: ''}} が実行される
+    //4. reducerにいく
+    //5. 3ばんで渡された値がreducerに渡される
+    //6. reducer で ゴニョゴニョしてstateの値が変更される
+    //7. ゴニョ先ほどのstateがApp.props（Container）に代入される
+    
+    console.log('33333333333333');
+    console.log(this.props);
+    //ここではreduxにあるデータ参照できる(this.props)
+    const { categories2, actions, selectedCategory } = this.props;
     const todos = this.getTodos();
     const categoryName = this.getCategoryName();
-
     return (<div>
-      <Categories categories={categories} 
-        addCategory={actions.addCategory} 
-        removeCategory={actions.removeCategory}
-        setCategory={actions.setCategory}
-      />
+      <Categories categoryName={categoryName} selectedCategory={selectedCategory} categories3={categories2} addCategory2={actions.addCategory} removeCategory={actions.removeCategory} setCategory77={actions.setCategory}/>
       <p>選択中のカテゴリー 「{categoryName}」</p>
-      <Todos todos={todos} 
-        addTodo={actions.addTodo} 
-        removeTodo={actions.removeTodo}
-        selectedCategory={selectedCategory}
-      />
+      <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
     </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return state;
+  return state;　//App::props === state
+  //componentのprops とreduxのステートが同期される
 }
 
 function mapDispatchToProps(dispatch) {

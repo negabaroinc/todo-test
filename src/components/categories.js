@@ -9,45 +9,63 @@ export default class Categories extends Component {
     }
   }
 
-  onInput(e) {
+  onInput(e){
     this.setState({
-      categoryName: e.target.value
+     name: e.target.value
     });
   }
 
-  addCategory() {
-    const { addCategory } = this.props;
-    const { categoryName } = this.state;
-    addCategory({
-      name: categoryName,
-      id: getRandomId()
+   removeCategory(category){
+     this.props.removeCategory(category)
+   }
+   
+  //このeどこで使ってる？なくてもうごくよね
+  addCategory3(){
+    this.props.addCategory2({
+       //------>>>>>id: 成功したけど、このやり方であってるかな
+       id: getRandomId(),
+       name: this.state.name,
     });
   }
-
-  removeCategory(category) {
-    this.props.removeCategory(category);
-  }
-
+  
   setCategory(categoryId) {
-    this.props.setCategory(categoryId);
+    this.props.setCategory77(categoryId);
   }
-
+  setCategory_ver2(e) {
+    console.log(this);
+    this.props.setCategory77(e.target.value);
+  }
+  
   render() {
-    const { categories } = this.props;
-    return (<div><ul>
-      <h3>カテゴリー</h3>
-        {categories.map((category) => {
-          return (<li key={category.id}>
-            {category.name}
-            <button onClick={this.setCategory.bind(this, category.id)}>選択</button>
-            <button onClick={this.removeCategory.bind(this, category)}>削除</button>
-            </li>);
-        })}
-        <li>
-          <input type="text" onInput={this.onInput.bind(this)}/>
-          <button onClick={this.addCategory.bind(this)}>追加</button>
-        </li>
-      </ul>
-    </div>)
+    const { categories3, selectedCategory } = this.props;
+    console.log('11111111111111:');
+    console.log(this.props);
+    //categories2はcontainerで渡したkeyのこと
+    return (<ul><h1>Category</h1>
+      <select name="example1" onChange={(e) => {
+        this.setCategory_ver2(e);
+      }} value={selectedCategory}>
+      {console.log('categories3!!!:'+ categories3)}
+      {categories3.map((category) => {
+        //koko3 (categoryNameがあればselectedを変える)
+        return (<option key={category.id} value={category.id}>{category.name}</option>);
+      })}
+      </select>
+      
+      {/* test */}
+      {categories3.map((category) => {
+        return (<li key={category.id}>
+        {category.name}
+        <button onClick={this.setCategory.bind(this, category.id)}>選択</button>
+        <button onClick={() => this.removeCategory(category)}> del</button>
+        </li>);
+      })}
+    <li>
+      <input type="text" onInput={this.onInput.bind(this)} />
+      {/*<button onClick={(event) => this.addCategory3(event)}>Add</button>*/}
+      <button onClick={() => this.addCategory3()}>Add</button>
+    </li>
+    </ul>)
+
   }
 }
