@@ -15,7 +15,6 @@ export default class Todos extends Component {
     });
   }
 
-
    addTodo3() {
      const { addTodo2, selectedCategory, key_hoge } = this.props;
      addTodo2({

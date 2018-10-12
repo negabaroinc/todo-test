@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getRandomId } from '../lib';
 
-
 export default class Categories extends Component {
   constructor(props) {
     super(props);
@@ -15,11 +14,11 @@ export default class Categories extends Component {
      name: e.target.value
     });
   }
-  
-  removeCategory(category){
-    this.props.removeCategory(category)
-  }
-  
+
+   removeCategory(category){
+     this.props.removeCategory(category)
+   }
+   
   //このeどこで使ってる？なくてもうごくよね
   addCategory3(){
     this.props.addCategory2({
