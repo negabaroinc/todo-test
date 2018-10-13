@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React from 'react';
+import Main from '../components/Main';
 import Categories from '../components/categories';
 import Todos from '../components/todos';
 import * as Actions from '../actions';
 import { getRandomId } from '../lib';
+import styled, { css } from 'styled-components'
 
 class App extends React.Component {
 
@@ -64,6 +66,7 @@ class App extends React.Component {
     const todos = this.getTodos();
     const categoryName = this.getCategoryName();
     return (<div>
+      <Main />
       <Categories categoryName={categoryName} selectedCategory={selectedCategory} categories3={categories2} addCategory2={actions.addCategory} removeCategory={actions.removeCategory} setCategory77={actions.setCategory}/>
       <p>選択中のカテゴリー 「{categoryName}」</p>
       <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
@@ -82,3 +85,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
