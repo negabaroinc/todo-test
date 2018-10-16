@@ -3,6 +3,6 @@ export default {
     height: 90,
   },
   SideWrapper: {
-    width: 160,
+    width: 250,
   },
 }

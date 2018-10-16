@@ -1,40 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
 import Size from '../constants/Size'
-import todos from './todos'
 
 
-export default class MainContent extends Component {
-  constructor(props) {
-    super(props); //React.Component::constructor(props); お約束
-  }
-  getTodos() {
-    const { todos, selectedCategory } = this.props;
-    return todos.filter((todo) => {
-      if (todo.category === selectedCategory) {
-        return true;
-      }
-      return false;
-    });
-  }
-  
-  render (){
-    const { categories2, actions, selectedCategory } = this.props;
-    const todos = this.getTodos();
-    
-    return (
+
+const MainContent = () => {
+  return (
     <Content>
-       <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
+             MainContent!!!!
     </Content>
     );
-  }
-  
-  
-  
-  
-  
-
 }
+export default MainContent
+
+
 
 
 const Content = styled.div`
