@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { Component } from 'react';
 import styled from 'styled-components'
 import Size from '../constants/Size'
 
-const Header = () => {
+
+
+const MainContent = () => {
   return (
     <Content>
-      Header!!
+             MainContent!!!!
     </Content>
     );
 }
-export default Header
+export default MainContent
+
+
+
 
 const Content = styled.div`
   height: ${Size.Header.height}px;
