@@ -2,14 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import Size from '../constants/Size'
 
-const Header = () => {
+const SideBar = () => {
   return (
     <Content>
-      Header!!
+      Sidebar!!
     </Content>
     );
 }
-export default Header
+export default SideBar
 
 const Content = styled.div`
   height: ${Size.Header.height}px;
