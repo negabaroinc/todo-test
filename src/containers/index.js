@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React from 'react';
-
-
+import Sortable from '../components/Sortable';
 
 import * as Actions from '../actions';
 import { getRandomId } from '../lib';
@@ -92,6 +91,7 @@ class App extends React.Component {
        <ContentWrapper>
          <p>選択中のカテゴリー 「{categoryName}」</p>
          <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
+         <Sortable />
        </ContentWrapper>
      </MainWrapper>
      </Page>
