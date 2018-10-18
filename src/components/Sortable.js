@@ -18,7 +18,7 @@ const SortableItem = SortableElement(({value}) =>
   <li>{value}</li>
 );
 
-class Sortable extends Component {
+export default class Sortable extends Component {
   state = {
     items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
   };
