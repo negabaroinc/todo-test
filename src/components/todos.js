@@ -1,7 +1,31 @@
 import React, { Component } from 'react';
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
+
+const SortableList22 = SortableContainer(({items}) => {
+  return (
+    <ul>
+      {items.map((value, index) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} />
+      ))}
+    </ul>
+  );
+});
+
+const SortableItem = SortableElement(({value}) =>
+  <li>{value}</li>
+);
 
 export default class Todos extends Component {
+  state = {
+    items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+  };
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({
+      items: arrayMove(this.state.items, oldIndex, newIndex),
+    });
+  };
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +74,7 @@ export default class Todos extends Component {
       <div>
       <ul>
       <h1>Todo</h1>
-      
+      <SortableList22 items={this.state.items} onSortEnd={this.onSortEnd} />
       {todos.map((todo) => {
         //koko3
         return (<li key={todo.id}>{todo.name}<button onClick={this.removeTodo.bind(this, todo)}>削除</button></li>);
