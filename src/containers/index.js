@@ -90,8 +90,13 @@ class App extends React.Component {
        </SideWrapper>
        <ContentWrapper>
          <p>選択中のカテゴリー 「{categoryName}」</p>
-         <Todos todos={todos} addTodo2={actions.addTodo} removeTodo={actions.removeTodo} selectedCategory={selectedCategory} />
-         <Sortable />
+         <Todos 
+          todos={todos} 
+          addTodo2={actions.addTodo} 
+          removeTodo={actions.removeTodo} 
+          selectedCategory={selectedCategory} 
+          setTodo={actions.setTodo}
+        />
        </ContentWrapper>
      </MainWrapper>
      </Page>

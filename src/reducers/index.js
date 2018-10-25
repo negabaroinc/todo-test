@@ -98,6 +98,23 @@ export default (state = initialState, action) => {
       return Object.assign({}, state, {
         selectedCategory: action.categoryId
       });
+
+    case types.SETTODO:
+      const groupTodos = action.todos;
+      if (groupTodos[0]) {
+        const categoryId = groupTodos[0].category;
+        const todos = state.todos;
+        const removed = todos.filter((todo) => {
+          if (todo.category === categoryId) {
+            return false;
+          }
+          return true;
+        });
+        return Object.assign({}, state, {
+          todos: [...removed, ...groupTodos]
+        });
+      }
+      return state;
       
     default:
       return state;
