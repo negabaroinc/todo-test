@@ -41,6 +41,7 @@ export default class Todos extends Component {
 
   onSortEnd({oldIndex, newIndex}) {
     const { todos } = this.props;
+    console.log(todos, arrayMove(todos, oldIndex, newIndex));
     this.props.setTodo(arrayMove(todos, oldIndex, newIndex));
   }
 

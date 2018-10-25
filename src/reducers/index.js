@@ -100,6 +100,41 @@ export default (state = initialState, action) => {
       });
 
     case types.SETTODO:
+      // state.todos 
+      /* [
+        {name: 'テスト1', category:'hogehoge'}
+        {name: 'テスト2', category:'hogehoge'},
+        {name: 'テスト3', category:'hogehoge'},
+        {name: 'todo1', category:'fuga'}
+        {name: 'todo2', category:'fuga'},
+        {name: 'todo3', category:'fuga'},
+      ]
+      */
+     /*
+      action.todos
+      [
+        {name: 'テスト3', category:'hogehoge'},
+        {name: 'テスト2', category:'hogehoge'},
+        {name: 'テスト1', category:'hogehoge'}
+      ]
+     */
+    /* 
+      categoryId === hogehoge 
+      removed = [
+        {name: 'todo1', category:'fuga'},
+        {name: 'todo2', category:'fuga'},
+        {name: 'todo3', category:'fuga'},
+      ]
+      [...removed, ...action.todos]
+      [
+        {name: 'todo1', category:'fuga'},
+        {name: 'todo2', category:'fuga'},
+        {name: 'todo3', category:'fuga'},
+        {name: 'テスト3', category:'hogehoge'},
+        {name: 'テスト2', category:'hogehoge'},
+        {name: 'テスト1', category:'hogehoge'}
+      ]
+    */
       const groupTodos = action.todos;
       if (groupTodos[0]) {
         const categoryId = groupTodos[0].category;
