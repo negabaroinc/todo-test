@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getRandomId } from '../lib';
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
 const SortableList = SortableContainer(({items}) => {
@@ -31,10 +32,10 @@ export default class Todos extends Component {
   }
 
   addTodo3() {
-    const { addTodo2, selectedCategory, key_hoge } = this.props;
+    const { addTodo2, selectedCategory } = this.props;
     addTodo2({
       name: this.state.name,
-      id: key_hoge,
+      id: getRandomId(),
       category: selectedCategory
     });
   }
