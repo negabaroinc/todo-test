@@ -16,3 +16,5 @@ export const updateCategory = (category) => ({ type: types.UPDATECATEGORY, categ
 export const removeCategory = (category) => ({ type: types.REMOVECATEGORY, category });
 
 export const setCategory = (categoryId) => ({ type: types.SETCATEGORY, categoryId });
+
+export const setTodo = (todos) => ({ type: types.SETTODO, todos });
